@@ -1,0 +1,36 @@
+/* Setup */
+@import 'setup/var.css';
+@import 'setup/typography.css';
+@import 'basic/helpers.css';
+
+/* components */
+@import 'components/gallery.css';
+@import 'components/header.css';
+@import 'components/meme-editor.css';
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-family: montserrat;
+}
+
+body{
+    margin: 0;
+}
+
+header{
+    height: 30px;
+    background-color: var(--pumpkin-orange);
+    color: var( --clr3);
+}
+
+footer{
+    height: 100px;
+    background-color: var(--pumpkin-orange);
+    color: var( --clr3);
+}
+
+
+
