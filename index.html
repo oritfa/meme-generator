@@ -30,7 +30,7 @@
                 <ul class="keywords-list flex clean-list">
                     <li>Happy</li>
                     <li>Crazy</li>
-                    <li>sarcastic</li>
+                    <li>Sarcastic</li>
                     <li>Sad</li>
                     <li>Animal</li>
                 </ul>
@@ -52,26 +52,37 @@
             </div>
             <div class="actions-container flex column">
                 <div class="control-box flex column align-center justify-center">
-                    <input class="meme-text" type="text" placeholder="Add your text.." oninput="onAddText(this.value)" />
+                    <input class="meme-text" type="text" placeholder="Add your text.."
+                        oninput="onAddText(this.value)" />
                     <div class="basic-actions">
-                        <button class="btn"><img
+                        <button class="btn" onclick="onSwitchLine()"><img
                                 src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
                         <!-- <button class="btn"><img
                                 src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
                         <button class="btn"><img
                                 src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button> -->
                         <button class="btn" onclick="onAddRow()"><img src="img/icons/add.png"></button>
-                        <button class="btn"><img src="img/icons/trash.png"></button>
+                        <button class="btn disabled" onclick="onRemoveLine()"><img src="img/icons/trash.png"></button>
                     </div>
 
                 </div>
                 <div class="control-box advanced-actions flex justify-center ">
-                    <button class="btn"><img src="img/icons/decrease font - icon.png"></button>
-                    <button class="btn"><img src="img/icons/increase font - icon.png"></button>
-                    <button class="btn"><img src="img/icons/align-to-left.png"></button>
-                    <button class="btn"><img src="img/icons/align-to-right.png"></button>
-                    <button class="btn"><img src="img/icons/center-text-alignment.png"></button>
-                    <button class="btn"><img src="img/icons/paint-board-and-brush.png"></button>
+                    <button class="btn" onclick="onDecreaseFont()"><img src="img/icons/decrease font - icon.png"></button>
+                    <button class="btn" onclick="onIncreaseFont()"><img src="img/icons/increase font - icon.png"></button>
+                    <button class="btn" onclick="onAlign('left',this)"><img src="img/icons/align-to-left.png"></button>
+                    <button class="btn" onclick="onAlign('right',this)"><img src="img/icons/align-to-right.png"></button>
+                    <button class="btn selected" onclick="onAlign('center',this)"><img src="img/icons/center-text-alignment.png"></button>
+                    <label class="btn" for="fill-color">
+                        <img src="img/icons/paint-board-and-brush.png">
+                        <input class="btn fill-color" type="color" id="fill-color" name="fill-color"
+                            style="display: none" onchange="onChangeFillColor(this.value)" />
+                    </label>
+                    <label for="stroke-color">
+                        <div class="btn stroke-color">S</div>
+                        <input type="color" id="stroke-color" name="stroke-color"
+                        style="display: none" onchange="onChangeStrokeColor(this.value)" />
+
+                    </label>
 
                 </div>
                 <div class="control-box stickers"></div>

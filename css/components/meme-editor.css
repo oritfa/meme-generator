@@ -13,17 +13,17 @@
 .actions-container>* {
     margin: 10px;
     flex-basis: 25%;
-    border: 2px rgba(0, 0, 0, 0.062) solid;
+    /* border: 2px rgba(0, 0, 0, 0.062) solid; */
 }
 
-.meme-text{
+.meme-text {
     width: 80%;
     height: 1.875em;
-    padding:10px;
+    padding: 10px;
     margin: 5px;
     border: none;
     outline: none;
-    background-color: var( --clr3);
+    background-color: var(--clr3);
     border-radius: 6px;
     font-size: 18px;
 }
@@ -37,33 +37,46 @@
     margin: 5px;
     border: none;
     outline: none;
-    background-color:var( --clr3);
+    background-color: var(--clr3);
     cursor: pointer;
     border-radius: 6px;
 }
 
-.btn img{
+.btn:hover{
+    background-color: var(--pumpkin-orange-hover); 
+}
+.btn.selected{
+    background-color: var(--pumpkin-orange-hover); 
+}
+
+.btn img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.save-btn{
+.save-btn {
     width: 8em;
     height: 2.5em;
     border: none;
     outline: none;
-    color:var( --clr3);
-    background-color:var( --pumpkin-orange);
+    color: var(--clr3);
+    background-color: var(--pumpkin-orange);
     cursor: pointer;
     border-radius: 8px;
     font-size: 18px;
 }
 
-.save-actions{
+.save-actions {
     gap: 1.5em;
 }
 
+.btn.stroke-color{
+    font-size: 1.25em;
+    font-weight: bold;
 
+}
 
-
+.btn.disabled{
+    background-color: rgba(128, 128, 128, 0.199);
+}

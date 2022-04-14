@@ -1,19 +1,16 @@
 'use strict'
 
-// var gMeme
+var gMeme
+const gFillColor = '#ffffff'
+const gStrokeColor = 'black'
+const gSize = 40
+let gAlign = 'center'
 
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: [{ txt: ' ', size: 20, align: 'left', color: 'red' }]
+    lines: [_createLine()]
 }
-
-// var gMeme = {
-//     selectedImgId: 1,
-//     selectedLineIdx: 0,
-//     lines: []
-// }
-
 
 function getMeme() {
     return gMeme
@@ -36,30 +33,73 @@ function getLines() {
     return gMeme.lines
 }
 
-function getTextByLineIdx(lineIdx){
+function getTextByLineIdx(lineIdx) {
     return gMeme.lines[lineIdx]
 }
 
-function setLineText(txt){
+
+
+function setLineText(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
-function getLineText(){
+function getLineText() {
     return gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
-function addLine(txt, size, align, color) {
-    const line = _createLine(txt, size, align, color)
-    gMeme.lines.push(line)
-    // increaseIneIdx()
+function setFillColor(fillColor) {
+    gMeme.lines[gMeme.selectedLineIdx].fillColor = fillColor
 }
 
-function _createLine(txt, size, align, color) {
+function getFillColor() {
+    return gMeme.lines[gMeme.selectedLineIdx].fillColor
+}
+
+function setStrokeColor(strokeColor) {
+    gMeme.lines[gMeme.selectedLineIdx].strokeColor = strokeColor
+}
+function getStrokeColor() {
+    return gMeme.lines[gMeme.selectedLineIdx].strokeColor
+}
+
+function addLine(txt, size = gSize, align = gAlign, fillColor = gFillColor, strokeColor = gStrokeColor) {
+    const line = _createLine(txt, size, align, fillColor, strokeColor)
+    gMeme.lines.push(line)
+}
+
+function decreaseFont() {
+    gMeme.lines[gMeme.selectedLineIdx].size--
+    console.log(gMeme.lines[gMeme.selectedLineIdx].size)
+}
+function increaseFont() {
+    gMeme.lines[gMeme.selectedLineIdx].size++
+    console.log(gMeme.lines[gMeme.selectedLineIdx].size)
+}
+
+function switchLine() {
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
+    else gMeme.selectedLineIdx++
+    console.log(gMeme.selectedLineIdx)
+}
+
+function setAlign(align) {
+    gMeme.lines[gMeme.selectedLineIdx].align = align
+    gAlign = align
+}
+
+// function  removeLine(){
+//     gMeme.lines[gMeme.selectedLineIdx].txt = ' '
+//     gMeme.lines.splice(gMeme.selectedLineIdx,1)
+//     switchLine() 
+// }
+
+function _createLine(txt = ' ', size = gSize, align = gAlign, fillColor = gFillColor, strokeColor = gStrokeColor) {
     return {
         txt,
         size,
         align,
-        color
+        fillColor,
+        strokeColor
     }
 }
 

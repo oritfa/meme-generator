@@ -2,6 +2,7 @@
 var gElCanvas
 var gCtx
 
+
 function onMemeEditorLoad() {
     gElCanvas = document.querySelector('.canvas')
     gCtx = gElCanvas.getContext('2d')
@@ -10,17 +11,19 @@ function onMemeEditorLoad() {
     renderMeme()
 }
 
-
 function renderMeme() {
     clearCanvas()
+    console.log(getLineIdx())
     const lines = getLines()
-    
+
     for (var i = 0; i < lines.length; i++) {
         var line = lines[i]
-        drawText(line.txt, i)
+        const { txt, size, align, fillColor, strokeColor } = line
+        const font = size + 'px Impact'
+        drawText(txt, i, fillColor, strokeColor, font, align)
         gCtx.globalCompositeOperation = 'destination-over';
     }
-    
+
     drawImg(getCurrImg().url)
     drawRect()
 }
@@ -47,7 +50,7 @@ function drawRect() {
         y = 0.05 * (gElCanvas.height)
     } else if (currLineIdx === 1) {
         y = 0.85 * (gElCanvas.height)
-    }else{
+    } else {
         y = 0.45 * (gElCanvas.height)
     }
     gCtx.beginPath();
@@ -58,53 +61,81 @@ function drawRect() {
     gCtx.closePath();
 }
 
-function drawText(text, pos) {
+function drawText(text, pos, fillColor, strokeColor, font, align) {
     let x
     let y
+    if (align === 'center') {
+        x = gElCanvas.width / 2
+        gCtx.textAlign = 'center'
+    } else if (align === 'left') {
+        x = gElCanvas.width * 0.1
+        gCtx.textAlign = 'start'
+
+    } else if (align === 'right') {
+        x = gElCanvas.width * 0.9
+        gCtx.textAlign = 'end'
+    }
 
     if (pos === 0) {
-        x = gElCanvas.width / 2
         y = 0.1 * (gElCanvas.height)
     } else if (pos === 1) {
-        x = gElCanvas.width / 2
         y = 0.9 * (gElCanvas.height)
     } else {
-        x = gElCanvas.width / 2
         y = gElCanvas.height / 2
     }
+
     gCtx.textBaseline = 'middle'
-    gCtx.textAlign = 'center'
-    gCtx.font = '40px Impact'
+    gCtx.font = font
     gCtx.lineWidth = 2
-    gCtx.fillStyle = '#ffffff'
+    gCtx.fillStyle = fillColor
     gCtx.fillText(text, x, y)
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = strokeColor
     gCtx.strokeText(text, x, y)
 }
+
+
 
 function onAddRow() {
     const elInput = document.querySelector('.meme-text')
     elInput.value = ' '
     increaseLineIdx()
-    addLine(' ', 20, 'align', 'color')
+    addLine()
     renderMeme()
 }
 
-// function drawText(ev) {
-//     const { offsetX, offsetY } = ev
-//     console.log(offsetX, offsetY)
-//     const x = gElCanvas.width/2
-//     const y = 0.1*(gElCanvas.height)
+function onChangeFillColor(color) {
+    setFillColor(color)
+    renderMeme()
+}
+function onChangeStrokeColor(color) {
+    setStrokeColor(color)
+    renderMeme()
+}
 
-//     gCtx.textBaseline = 'middle';
-//     gCtx.textAlign = 'center';
-//     gCtx.font = '50px Impact';
-//     gCtx.lineWidth = 2;
-//     gCtx.fillStyle = '#ffffff';
-//     gCtx.fillText('TEST', x, y);
-//     gCtx.strokeStyle = 'black';
-//     gCtx.strokeText('TEST', x, y);
-// }
+function onDecreaseFont() {
+    decreaseFont()
+    renderMeme()
+
+}
+function onIncreaseFont() {
+    increaseFont()
+    renderMeme()
+}
+
+function onSwitchLine() {
+    switchLine()
+    renderMeme()
+}
+
+function onAlign(align, btn){
+
+    var elbtn = document.querySelector('.selected')
+    elbtn.classList.remove('selected')
+    setAlign(align)
+    btn.classList.add('selected')
+    renderMeme()
+    
+}
 
 function clearCanvas() {
     gCtx.clearRect(0, 0, canvas.height, canvas.width)
@@ -120,3 +151,26 @@ function resizeCanvas() {
 function addListeners() {
     window.addEventListener('resize', resizeCanvas)
 }
+
+
+
+    // function onRemoveLine(){
+    //     removeLine()
+    //     renderMeme()
+    // }
+    
+    // function drawText(ev) {
+    //     const { offsetX, offsetY } = ev
+    //     console.log(offsetX, offsetY)
+    //     const x = gElCanvas.width/2
+    //     const y = 0.1*(gElCanvas.height)
+    
+    //     gCtx.textBaseline = 'middle';
+    //     gCtx.textAlign = 'center';
+    //     gCtx.font = '50px Impact';
+    //     gCtx.lineWidth = 2;
+    //     gCtx.fillStyle = '#ffffff';
+    //     gCtx.fillText('TEST', x, y);
+    //     gCtx.strokeStyle = 'black';
+    //     gCtx.strokeText('TEST', x, y);
+    // }
