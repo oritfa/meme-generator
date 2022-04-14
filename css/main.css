@@ -21,7 +21,7 @@ body{
 }
 
 header{
-    height: 30px;
+    height: 40px;
     background-color: var(--pumpkin-orange);
     color: var( --clr3);
 }

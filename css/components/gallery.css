@@ -1,6 +1,14 @@
 .search{
     height: 50px;
+    padding-left: 35px;
+    padding-right: 35px;
 }
+
+
+.keywords-list li {
+    padding: 5px;
+}
+
 
 .gallery-container{
     height: 450px;

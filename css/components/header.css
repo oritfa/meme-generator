@@ -1,0 +1,21 @@
+.header-layout {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav li a {
+    padding: 5px;
+    text-decoration: none;
+    color: var(--crl3);
+
+}
+
+.nav li a:hover {
+    color: var(--clr4);
+    box-shadow: inset 0 -2px 0 var(--clr4);
+}
