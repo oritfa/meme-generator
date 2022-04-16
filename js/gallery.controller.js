@@ -42,3 +42,8 @@ function navigateTo(sectionId) {
             break;
     }
 }
+
+function onSetFilter(category){
+    setFilter(category)
+    renderImgs()
+}

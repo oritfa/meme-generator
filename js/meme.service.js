@@ -5,12 +5,14 @@ const gFillColor = '#ffffff'
 const gStrokeColor = 'black'
 const gSize = 40
 let gAlign = 'center'
+let gFontFamily = 'Impact'
 
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [_createLine()]
 }
+
 
 function getMeme() {
     return gMeme
@@ -23,10 +25,6 @@ function setImg(id) {
 
 function getLineIdx() {
     return gMeme.selectedLineIdx
-}
-
-function increaseLineIdx() {
-    gMeme.selectedLineIdx++
 }
 
 function getLines() {
@@ -65,6 +63,7 @@ function getStrokeColor() {
 function addLine(txt, size = gSize, align = gAlign, fillColor = gFillColor, strokeColor = gStrokeColor) {
     const line = _createLine(txt, size, align, fillColor, strokeColor)
     gMeme.lines.push(line)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
 function decreaseFont() {
@@ -87,19 +86,24 @@ function setAlign(align) {
     gAlign = align
 }
 
-// function  removeLine(){
-//     gMeme.lines[gMeme.selectedLineIdx].txt = ' '
-//     gMeme.lines.splice(gMeme.selectedLineIdx,1)
-//     switchLine() 
-// }
+function  removeLine(){
+    gMeme.lines[gMeme.selectedLineIdx].txt = ' '
+}
 
-function _createLine(txt = ' ', size = gSize, align = gAlign, fillColor = gFillColor, strokeColor = gStrokeColor) {
+function setFont(fontFamily){
+    gMeme.lines[gMeme.selectedLineIdx].fontFamily = fontFamily
+    gFontFamily = fontFamily
+
+}
+
+function _createLine(txt = ' ', size = gSize, align = gAlign, fillColor = gFillColor, strokeColor = gStrokeColor, fontFamily= gFontFamily) {
     return {
         txt,
         size,
         align,
         fillColor,
-        strokeColor
+        strokeColor,
+        fontFamily
     }
 }
 

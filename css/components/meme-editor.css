@@ -1,14 +1,13 @@
 .meme-editor {
-    height: 530px;
     padding: 20px 20px 20px;
     background-color: var(--clr2);
     gap: 20px;
 }
 
-.meme-editor>* {
-    width: 40vw;
+/* .meme-editor>* {
+    width: 35vw;
     height: 70vh;
-}
+} */
 
 .actions-container>* {
     margin: 10px;
@@ -17,7 +16,7 @@
 }
 
 .meme-text {
-    width: 80%;
+    width: 60%;
     height: 1.875em;
     padding: 10px;
     margin: 5px;
@@ -25,13 +24,10 @@
     outline: none;
     background-color: var(--clr3);
     border-radius: 6px;
-    font-size: 18px;
+    font-size: 1em;
 }
 
 .btn {
-    /* width: 1.875em;
-    height: 1.875em; */
-    /* width: 50px; */
     height: 35px;
     padding: 5px;
     margin: 5px;
@@ -56,7 +52,7 @@
 }
 
 .save-btn {
-    width: 8em;
+    width: 6em;
     height: 2.5em;
     border: none;
     outline: none;
@@ -79,4 +75,9 @@
 
 .btn.disabled{
     background-color: rgba(128, 128, 128, 0.199);
+}
+
+.save-btn a{
+    text-decoration: none;
+    color: var(--clr3);
 }

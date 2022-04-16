@@ -22,10 +22,24 @@
     </header>
 
     <section id="image-gallery">
-        <div class="search flex space-between align-center ">
-            <div>
-                <input type="text" placeholder="Enter search keyword" />
+        <div class="filter-container flex space-between align-center ">
+            <div class="datalist-container flex">
+                <label for="categories-list">
+                    <input class="categories-list" id="categories-list" list="categories"
+                    placeholder="Enter search keyword " onchange="onSetFilter(this.value)">
+                    <img src="img/icons/search-icon.png">
+                </label>
+
+                    <datalist id="categories">
+                        <option value="Happy">
+                        <option value="Crazy">Crazy</option>
+                        <option value="Sarcastic">Sarcastic</option>
+                        <option value="Sad">Sad</option>
+                        <option value="Animal">Animal</option>
+                        <option value="Funny">Funny</option>
+                    </datalist>
             </div>
+
             <div class="keywords">
                 <ul class="keywords-list flex clean-list">
                     <li>Happy</li>
@@ -33,6 +47,7 @@
                     <li>Sarcastic</li>
                     <li>Sad</li>
                     <li>Animal</li>
+                    <li>Funny</li>
                 </ul>
             </div>
         </div>
@@ -57,38 +72,53 @@
                     <div class="basic-actions">
                         <button class="btn" onclick="onSwitchLine()"><img
                                 src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-                        <!-- <button class="btn"><img
-                                src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-                        <button class="btn"><img
-                                src="img/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button> -->
-                        <button class="btn" onclick="onAddRow()"><img src="img/icons/add.png"></button>
-                        <button class="btn disabled" onclick="onRemoveLine()"><img src="img/icons/trash.png"></button>
+                         <button class="btn" onclick="onAddRow()"><img src="img/icons/add.png"></button>
+                        <button class="btn" onclick="onRemoveLine()"><img src="img/icons/trash.png"></button>
                     </div>
 
                 </div>
-                <div class="control-box advanced-actions flex justify-center ">
-                    <button class="btn" onclick="onDecreaseFont()"><img src="img/icons/decrease font - icon.png"></button>
-                    <button class="btn" onclick="onIncreaseFont()"><img src="img/icons/increase font - icon.png"></button>
-                    <button class="btn" onclick="onAlign('left',this)"><img src="img/icons/align-to-left.png"></button>
-                    <button class="btn" onclick="onAlign('right',this)"><img src="img/icons/align-to-right.png"></button>
-                    <button class="btn selected" onclick="onAlign('center',this)"><img src="img/icons/center-text-alignment.png"></button>
-                    <label class="btn" for="fill-color">
-                        <img src="img/icons/paint-board-and-brush.png">
-                        <input class="btn fill-color" type="color" id="fill-color" name="fill-color"
-                            style="display: none" onchange="onChangeFillColor(this.value)" />
-                    </label>
-                    <label for="stroke-color">
-                        <div class="btn stroke-color">S</div>
-                        <input type="color" id="stroke-color" name="stroke-color"
-                        style="display: none" onchange="onChangeStrokeColor(this.value)" />
+                <div class="control-box advanced-actions flex justify-center column">
+                    <div class="flex justify-center">
 
-                    </label>
+                        <button class="btn" onclick="onDecreaseFont()"><img
+                                src="img/icons/decrease font - icon.png"></button>
+                        <button class="btn" onclick="onIncreaseFont()"><img
+                                src="img/icons/increase font - icon.png"></button>
+                        <button class="btn" onclick="onAlign('left',this)"><img
+                                src="img/icons/align-to-left.png"></button>
+                        <button class="btn selected" onclick="onAlign('center',this)"><img
+                                src="img/icons/center-text-alignment.png"></button>
+                        <button class="btn" onclick="onAlign('right',this)"><img
+                                src="img/icons/align-to-right.png"></button>
+
+                    </div>
+                    <div class="flex justify-center">
+                        <select class="btn font-family" onchange="onSetFont(this.value)">
+                            <option value="Impact">Impact</option>
+                            <option value="Ariel">Ariel</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Verdana">Verdana</option>
+                        </select>
+                        <label for="stroke-color">
+                            <div class="btn stroke-color">S</div>
+                            <input type="color" id="stroke-color" name="stroke-color" style="display: none"
+                                onchange="onChangeStrokeColor(this.value)" />
+                        </label>
+                        <label class="btn" for="fill-color">
+                            <img src="img/icons/paint-board-and-brush.png">
+                            <input class="btn fill-color" type="color" id="fill-color" name="fill-color"
+                                style="display: none" onchange="onChangeFillColor(this.value)" />
+                        </label>
+                    </div>
+
 
                 </div>
                 <div class="control-box stickers"></div>
                 <div class="control-box save-actions flex align-center justify-center">
-                    <button class="save-btn">Share</button>
-                    <button class="save-btn">Download</button>
+                    <button class="save-btn" onclick="onSave()">Save</button>
+                    <button class="save-btn">
+                        <a href="#" onclick="onDownloadCanvas(this)" download="my-meme">Download</a>
+                    </button>
                 </div>
 
             </div>

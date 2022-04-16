@@ -12,20 +12,22 @@ function onMemeEditorLoad() {
 }
 
 function renderMeme() {
+    renderLines()
+    drawRect()
+}
+
+function renderLines(){
     clearCanvas()
-    console.log(getLineIdx())
     const lines = getLines()
 
     for (var i = 0; i < lines.length; i++) {
         var line = lines[i]
-        const { txt, size, align, fillColor, strokeColor } = line
-        const font = size + 'px Impact'
+        const { txt, size, align, fillColor, strokeColor, fontFamily } = line
+        const font = size + 'px ' + fontFamily
         drawText(txt, i, fillColor, strokeColor, font, align)
         gCtx.globalCompositeOperation = 'destination-over';
     }
-
     drawImg(getCurrImg().url)
-    drawRect()
 }
 
 function drawImg(url) {
@@ -43,7 +45,7 @@ function onAddText(txt) {
 
 function drawRect() {
     const currLineIdx = getLineIdx()
-    const x = gElCanvas.width * 0.1
+    const x = gElCanvas.width * 0.15
     let y
 
     if (currLineIdx === 0) {
@@ -98,7 +100,6 @@ function drawText(text, pos, fillColor, strokeColor, font, align) {
 function onAddRow() {
     const elInput = document.querySelector('.meme-text')
     elInput.value = ' '
-    increaseLineIdx()
     addLine()
     renderMeme()
 }
@@ -128,13 +129,32 @@ function onSwitchLine() {
 }
 
 function onAlign(align, btn){
-
     var elbtn = document.querySelector('.selected')
     elbtn.classList.remove('selected')
     setAlign(align)
     btn.classList.add('selected')
     renderMeme()
-    
+}
+
+function onRemoveLine(){
+    removeLine()
+    renderMeme()
+}
+
+function onSetFont(fontFamily){
+    setFont(fontFamily)
+    renderMeme()
+}
+
+function onSave(){
+    renderLines()
+}
+
+
+function onDownloadCanvas(elLink) {
+    const data = gElCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'my-meme'
 }
 
 function clearCanvas() {
@@ -152,25 +172,3 @@ function addListeners() {
     window.addEventListener('resize', resizeCanvas)
 }
 
-
-
-    // function onRemoveLine(){
-    //     removeLine()
-    //     renderMeme()
-    // }
-    
-    // function drawText(ev) {
-    //     const { offsetX, offsetY } = ev
-    //     console.log(offsetX, offsetY)
-    //     const x = gElCanvas.width/2
-    //     const y = 0.1*(gElCanvas.height)
-    
-    //     gCtx.textBaseline = 'middle';
-    //     gCtx.textAlign = 'center';
-    //     gCtx.font = '50px Impact';
-    //     gCtx.lineWidth = 2;
-    //     gCtx.fillStyle = '#ffffff';
-    //     gCtx.fillText('TEST', x, y);
-    //     gCtx.strokeStyle = 'black';
-    //     gCtx.strokeText('TEST', x, y);
-    // }

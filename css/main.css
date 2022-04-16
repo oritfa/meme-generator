@@ -1,3 +1,5 @@
+@import 'basic/mq.css';
+
 /* Setup */
 @import 'setup/var.css';
 @import 'setup/typography.css';
@@ -31,6 +33,7 @@ footer{
     background-color: var(--pumpkin-orange);
     color: var( --clr3);
 }
+
 
 
 

@@ -1,0 +1,125 @@
+/* MOILE ONLY */
+@media (max-width: 640px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    .gallery-container {
+        height: 1700px;
+        padding: 10px 10px 10px;
+    }
+
+    .grid {
+        grid-gap: 10px 10px;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        margin: 7px;
+    }
+
+    .header-layout {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .nav li a {
+        padding: 2px;
+    }
+
+    .meme-editor {
+        flex-direction: column;
+        height: 820px;
+    }
+
+}
+
+
+/* SMALL */
+@media (min-width: 640px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    .gallery-container {
+        height: 900px;
+        padding: 10px 10px 10px;
+    }
+
+    .grid {
+        grid-gap: 10px 10px;
+    }
+
+    .header-layout {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .nav li a {
+        padding: 2px;
+    }
+
+    .filter-container {
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 7px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .meme-editor {
+        flex-direction: column;
+        height: 820px;
+    }
+
+}
+
+/* MEDIUM */
+@media (min-width: 800px) {
+
+    .gallery-container {
+        height: 650px;
+        padding: 20px 35px 20px;
+    }
+
+    .grid {
+        grid-gap: 20px 20px;
+    }
+
+    .header-layout {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .nav li a {
+        padding: 5px;
+    }
+
+    .filter-container {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .meme-editor {
+        flex-direction: row;
+        height: 530px;
+    }
+
+    .meme-editor>* {
+        width: 35vw;
+        height: 70vh;
+    }
+}
+
+@media (min-width: 1020px) {
+    html {
+        font-size: 16px;
+    }
+
+    .gallery-container {
+        height: 450px;
+    }
+
+}

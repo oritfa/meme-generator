@@ -6,7 +6,5 @@
 function onInit() {
 
     renderImgs()
-
-    // addListeners()
 }
 
